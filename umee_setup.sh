@@ -64,7 +64,7 @@ function state_sync {
 	peers="95102fe03e73bba8b685639402dd53d9f935bc65@89.163.164.207:36656"
 	sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$peers\"/" $HOME/.umee/config/config.toml
 
-	SNAP="http://89.163.164.207:26657"
+	SNAP="http://89.163.164.207:36657"
 	LATEST_HEIGHT=$(curl -s $SNAP/block | jq -r .result.block.header.height)
 	TRUST_HEIGHT=$((LATEST_HEIGHT - 1000))
 	TRUST_HASH=$(curl -s "$SNAP/block?height=$TRUST_HEIGHT" | jq -r .result.block_id.hash)
