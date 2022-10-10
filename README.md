@@ -55,6 +55,7 @@ umeed version
 ```
 umeed init $UMEE_NODENAME --chain-id umee-1
 wget -O $HOME/.umee/config/genesis.json https://github.com/umee-network/mainnet/raw/main/genesis.json
+sed -i -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.0uumee\"/" $HOME/.umeed/config/app.toml
 ```
 
 #### Creating a service file
