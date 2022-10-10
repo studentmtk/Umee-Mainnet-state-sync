@@ -103,6 +103,7 @@ s|^(trust_height[[:space:]]+=[[:space:]]+).*$|\1$TRUST_HEIGHT| ; \
 s|^(trust_hash[[:space:]]+=[[:space:]]+).*$|\1\"$TRUST_HASH\"|" $HOME/.umee/config/config.toml
 ```
 ```
+sed -i -e "s/^snapshot-interval *=.*/snapshot-interval = 1000/" $HOME/.umee/config/app.toml
 sudo systemctl start umeed
 journalctl -u umeed -f
 ```  
