@@ -28,8 +28,8 @@ sudo apt install make clang pkg-config libssl-dev build-essential git jq ncdu bs
 #### installing Go
 ```
 cd $HOME
-wget -O go1.17.1.linux-amd64.tar.gz https://golang.org/dl/go1.17.1.linux-amd64.tar.gz
-rm -rf /usr/local/go && tar -C /usr/local -xzf go1.17.1.linux-amd64.tar.gz && rm go1.17.1.linux-amd64.tar.gz
+wget -O go1.18.5.linux-amd64.tar.gz https://golang.org/dl/go1.18.5.linux-amd64.tar.gz
+rm -rf /usr/local/go && tar -C /usr/local -xzf go1.18.5.linux-amd64.tar.gz && rm go1.18.5.linux-amd64.tar.gz
 echo 'export GOROOT=/usr/local/go' >> $HOME/.bash_profile
 echo 'export GOPATH=$HOME/go' >> $HOME/.bash_profile
 echo 'export GO111MODULE=on' >> $HOME/.bash_profile
@@ -43,7 +43,7 @@ cd $HOME
 git clone https://github.com/umee-network/umee.git
 cd umee
 git pull
-git checkout tags/v1.0.3
+git checkout v3.0.1
 make build
 sudo cp $HOME/umee/build/umeed /usr/local/bin
 umeed version
@@ -85,12 +85,12 @@ sudo systemctl enable umeed
 
 ```
 systemctl stop umeed
-umeed unsafe-reset-all
-peers="95102fe03e73bba8b685639402dd53d9f935bc65@89.163.164.207:36656"
+umeed tendermint unsafe-reset-all --keep-addr-book
+peers="2185f05f4e39f9de8590cb17aac54bca2e14357f@89.163.164.207:26656"
 sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$peers\"/" $HOME/.umee/config/config.toml
 ```
 ```
-SNAP="http://89.163.164.207:36657"
+SNAP="http://89.163.164.207:26657"
 LATEST_HEIGHT=$(curl -s $SNAP/block | jq -r .result.block.header.height)
 TRUST_HEIGHT=$((LATEST_HEIGHT - 1000))
 TRUST_HASH=$(curl -s "$SNAP/block?height=$TRUST_HEIGHT" | jq -r .result.block_id.hash)
