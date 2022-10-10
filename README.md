@@ -86,7 +86,10 @@ sudo systemctl enable umeed
 
 ```
 systemctl stop umeed
+cp $HOME/.umee/data/priv_validator_state.json $HOME/.umee
 umeed tendermint unsafe-reset-all --keep-addr-book
+mv $HOME/.umee/priv_validator_state.json $HOME/.umee/data/
+
 peers="2185f05f4e39f9de8590cb17aac54bca2e14357f@89.163.164.207:26656"
 sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$peers\"/" $HOME/.umee/config/config.toml
 ```
