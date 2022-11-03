@@ -48,7 +48,7 @@ function install_Software {
 	git clone https://github.com/umee-network/umee.git
 	cd umee
 	git pull
-	git checkout v3.0.2
+	git checkout v3.1.0
 	make build
 	sudo cp $HOME/umee/build/umeed /usr/local/bin
 	umeed version
