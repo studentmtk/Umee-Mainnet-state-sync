@@ -85,7 +85,7 @@ sudo systemctl enable umeed
 #### Preparing for fast synchronization
 
 ```
-systemctl stop umeed
+sudo systemctl stop umeed
 mv $HOME/.umee/data/priv_validator_state.json $HOME/.umee
 umeed tendermint unsafe-reset-all
 mv $HOME/.umee/priv_validator_state.json $HOME/.umee/data/
