@@ -60,7 +60,7 @@ function install_Software {
 
 
 function state_sync {
-	systemctl stop umeed
+	sudo systemctl stop umeed
 	mv $HOME/.umee/data/priv_validator_state.json $HOME/.umee
 	umeed tendermint unsafe-reset-all
 	mv $HOME/.umee/priv_validator_state.json $HOME/.umee/data/
